@@ -8,15 +8,15 @@ import java.util.stream.Stream;
 
 public class ThreadLauncher {
 
-    private String[] names;
+    protected String[] names;
 
-    private List<Thread> threads;
+    protected List<Thread> threads;
 
-    private int nThreads;
+    protected int nThreads;
 
-    private Random random;
+    protected Random random;
 
-    private ItemStore store;
+    protected ItemStore store;
 
     protected volatile boolean thread_exit;
 
@@ -50,6 +50,11 @@ public class ThreadLauncher {
 
         System.out.println("Anzahl an Threads: " + nThreads);
     }
+    
+    public void startAllThreads() {
+        threads.stream()
+               .forEach(Thread::start);
+    }
 
     public void waitForFinish() {
         while (threads.stream().anyMatch(Thread::isAlive)) {
@@ -57,7 +62,7 @@ public class ThreadLauncher {
         }
     }
 
-    public void work() {
+    protected void work() {
 
         while (!thread_exit) {
 
