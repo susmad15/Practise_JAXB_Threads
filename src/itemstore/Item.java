@@ -1,21 +1,35 @@
 package itemstore;
 
+import com.google.gson.annotations.Expose;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.UUID;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlTransient;
 import org.apache.commons.codec.digest.DigestUtils;
 
-
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Item {
-   
+
+    @Expose
+    @XmlElement
     private String data;
-    
+
+    @Expose
+    @XmlElement
     private long timeStamp;
-    
+
+    @Expose
+    @XmlElement
     private String previousHash;
-    
+
+    @Expose
+    @XmlElement
     private String hash;
-    
+
+    @XmlTransient
     private Item previousItem;
 
     public Item(String previousHash) {
@@ -24,7 +38,10 @@ public class Item {
         timeStamp = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC);
         hash = calculateHash();
     }
-    
+
+    public Item() {
+    }
+
     public String calculateHash() {
         return DigestUtils.sha256Hex(previousHash + timeStamp + data);
     }
@@ -68,8 +85,5 @@ public class Item {
     public void setPreviousItem(Item previousItem) {
         this.previousItem = previousItem;
     }
-    
-    
-    
-    
+
 }
