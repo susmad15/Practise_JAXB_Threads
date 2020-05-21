@@ -27,6 +27,22 @@ public class ThreadLauncher {
         random = new Random();
         store = ItemStore.getInstance();
         thread_exit = false;
+        
+        // Start all Threads
+        System.err.println("Starting all Threads!");
+        launchThreads();
+        
+        // Wait 3 Seconds then kill all threads
+        System.err.println("Waiting 3 Seconds before killing all Threads!");
+        delay(3000);
+        killAllThreads();
+        
+        // Wait if all Threads are finished
+        System.err.println("Waiting for all Threads to be finished!");
+        waitForFinish();
+        
+        System.err.println("All Threads are dead now!");
+        
     }
 
     public void delay(int msecs) {
@@ -45,6 +61,9 @@ public class ThreadLauncher {
 
                     threads.add(t);
                 });
+        
+        threads.stream()
+               .forEach(Thread::start);
 
         nThreads = threads.size();
 

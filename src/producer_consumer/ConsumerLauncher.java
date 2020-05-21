@@ -21,6 +21,8 @@ public class ConsumerLauncher extends ThreadLauncher {
                         "  " + threadName + " - consuming "
                         + store.peek().getData()
                 );
+                
+                store.removeItem(store.peek());
             }
         }
     }

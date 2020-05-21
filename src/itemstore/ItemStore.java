@@ -39,6 +39,10 @@ public class ItemStore {
         items.add(i);
     }
     
+    public void removeItem(Item i) {
+        items.remove(i);
+    }
+    
     public Boolean isStoreValid() {
         return items.stream()
              .skip(1)
