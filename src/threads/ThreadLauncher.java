@@ -19,6 +19,7 @@ public class ThreadLauncher {
     protected ItemStore store;
 
     protected volatile boolean thread_exit;
+   
 
     public ThreadLauncher(String[] names) {
         this.names = names;
@@ -37,11 +38,6 @@ public class ThreadLauncher {
         delay(3000);
         killAllThreads();
         
-        // Wait if all Threads are finished
-        System.err.println("Waiting for all Threads to be finished!");
-        waitForFinish();
-        
-        System.err.println("All Threads are dead now!");
         
     }
 

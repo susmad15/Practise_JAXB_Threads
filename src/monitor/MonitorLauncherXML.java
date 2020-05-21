@@ -20,7 +20,7 @@ public class MonitorLauncherXML extends ThreadLauncher {
     protected void work() {
         while (!thread_exit) {            
             
-            delay(delta_sec * 1000);
+            delay(delta_sec * 100);
             
             synchronized(store) {
                 JAXB.marshal(store, System.out);

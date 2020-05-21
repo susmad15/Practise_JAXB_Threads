@@ -18,7 +18,7 @@ public class MonitorLauncherJSON extends ThreadLauncher{
     protected void work() {
         while (!thread_exit) {    
             
-            delay(delta_sec * 1000);
+            delay(delta_sec * 100);
             
             synchronized(store) {
                 Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();

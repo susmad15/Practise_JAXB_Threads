@@ -17,6 +17,7 @@ public class ItemStore {
     @XmlElementWrapper(name = "items")
     @XmlElement(name = "item")
     private List<Item> items;
+    
 
     private ItemStore() {
         items = new ArrayList<>();

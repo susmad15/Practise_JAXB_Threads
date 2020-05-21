@@ -24,11 +24,11 @@ public class ItemStoreController {
 
         names = new String[]{"T1", "T2", "T3", "T4", "T5"};
 
-        //launcher = new ThreadLauncher(names);
+        launcher = new ThreadLauncher(names);
         producerlauncher = new ProducerLauncher(new String[]{"P1", "P2", "P3", "P4", "P5"});
         consumerlauncher = new ConsumerLauncher(new String[]{"C1", "C2", "C3", "C4", "C5"});
-        // launcherxml = new MonitorLauncherXML(2);
-        //launcherjson = new MonitorLauncherJSON(2);
+        launcherxml = new MonitorLauncherXML(2);
+        launcherjson = new MonitorLauncherJSON(2);
     }
 
     public void setNames(String[] names) {
